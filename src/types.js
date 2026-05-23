@@ -62,4 +62,4 @@
  * @property {number} activeStaff
  */
 
-export { };
+export {};

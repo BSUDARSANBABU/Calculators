@@ -67,7 +67,7 @@ export default function DashboardTab() {
   const [validationWarning, setValidationWarning] = useState(null);
 
   // Custom Date-Time Parsing
-  const parseCustomDateTime = (input: string): Date | null => {
+  const parseCustomDateTime = (input) => {
     if (!input) return null;
     let cleaned = input.trim().replace(/\s+/g, ' '); // normalize whitespace
 
@@ -139,7 +139,7 @@ export default function DashboardTab() {
   };
 
   // Helper to format date consistent with DD-MM-YYYY HH:mm
-  const formatDateTime = (date: Date): string => {
+  const formatDateTime = (date) => {
     if (isNaN(date.getTime())) return "Invalid Date";
     const day = String(date.getDate()).padStart(2, '0');
     const month = String(date.getMonth() + 1).padStart(2, '0');
@@ -150,7 +150,7 @@ export default function DashboardTab() {
   };
 
   // Perform calculation and save record to history logs
-  const computeAndAddRecord = (actionName: string) => {
+  const computeAndAddRecord = (actionName) => {
     const site = originSite.toUpperCase().trim();
     if (!site) {
       setOriginSiteWarning('Enter Site');
@@ -205,7 +205,7 @@ export default function DashboardTab() {
   };
 
   // Calculate Transit Time directly into Days & Hours formatted with "+"
-  const calculateTransitTimeText = (): string => {
+  const calculateTransitTimeText = () => {
     const rawHours = parseInt(transitHrsInput, 10);
     if (isNaN(rawHours) || rawHours < 0) return '0d + 0h';
     const days = Math.floor(rawHours / 24);
@@ -214,7 +214,7 @@ export default function DashboardTab() {
   };
 
   // Origin site typing & pasting validation handlers (Mixed-case friendly)
-  const handleOriginSiteTyping = (val: string) => {
+  const handleOriginSiteTyping = (val) => {
     setOriginSite(val);
     const uppercased = val.toUpperCase().trim();
     if (uppercased === '') {
@@ -247,7 +247,7 @@ export default function DashboardTab() {
   };
 
   // Site time typing & pasting validation handlers
-  const handleSiteTimeTyping = (val: string) => {
+  const handleSiteTimeTyping = (val) => {
     setCurrentSiteTimeInput(val);
     if (val === '') {
       setComplianceWarning('Time input is empty.');
@@ -273,7 +273,7 @@ export default function DashboardTab() {
     e.preventDefault();
   };
 
-  const getDatetimeInputValue = (): string => {
+  const getDatetimeInputValue = () => {
     const parsed = parseCustomDateTime(currentSiteTimeInput);
     if (!parsed) return '';
     const year = parsed.getFullYear();
@@ -285,7 +285,7 @@ export default function DashboardTab() {
   };
 
   // Type and paste handlers with interactive validation for Transit
-  const handleHoursTyping = (val: string) => {
+  const handleHoursTyping = (val) => {
     if (val === '') {
       setTransitHrsInput('');
       setValidationWarning('Input is empty.');
@@ -382,7 +382,7 @@ export default function DashboardTab() {
     },
   ];
 
-  const handleCarrierChange = (carrier: string) => {
+  const handleCarrierChange = (carrier) => {
     setSdtCarrier(carrier);
     if (carrier === 'NCSL') {
       setSdtSubCarrier('AZNG');
