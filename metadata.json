@@ -1,0 +1,6 @@
+{
+  "name": "LogiTrack Global",
+  "description": "High-precision operational loading compliance deadline and transit duration calculator.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
